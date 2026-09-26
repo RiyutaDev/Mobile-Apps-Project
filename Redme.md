@@ -1,4 +1,124 @@
 //
+//Explicit Typing (Tanpa var):
+//
+void main() {
+  String namaLaptop = 'ASUS ROG';
+  int jumlahLaptop = 10;
+  double hargaLaptop = 15000000.0;
+  bool tersedia = true;
+
+  // Nilai dapat diubah
+  jumlahLaptop = 8;
+
+  // Menampilkan data
+  print('==============================');
+  print('        DATA LAPTOP');
+  print('==============================');
+  print('Nama Laptop : $namaLaptop');
+  print('Jumlah      : $jumlahLaptop');
+  print('Harga       : Rp$hargaLaptop');
+  print('Tersedia    : $tersedia');
+  print('==============================');
+}
+
+//
+//Sound Null Safety:
+//
+void main() {
+  // Non-Nullable
+  String namaMakanan = 'Nasi Uduk';
+
+  print('Nama Makanan : $namaMakanan');
+
+  // Nullable
+  String? catatanPembeli;
+
+  catatanPembeli = 'Jangan terlalu Banyak Sambelnya';
+
+  print('Catatan      : $catatanPembeli');
+
+  // Variabel boleh diisi null
+  catatanPembeli = null;
+
+  print('Catatan setelah diubah menjadi null : $catatanPembeli');
+
+  // Null-Aware Operator (??)
+  String catatanTampil =
+      catatanPembeli ?? 'Tidak ada catatan dari pembeli';
+
+  print('Catatan Tampil : $catatanTampil');
+
+  // Null-Aware Access (?.)
+  print('Catatan Kapital : ${catatanPembeli?.toUpperCase()}');
+}
+
+//
+//final & Const dengan Tipe Eksplisit:
+//
+void main() {
+  // FINAL
+  // Nilainya ditentukan saat program berjalan dan hanya bisa diisi satu kali
+  final String orderId = 'ORD-2026-001';
+  final DateTime orderTime = DateTime.now();
+
+  final String namaPelanggan = 'Rizky';
+  final int nomorAntrian = 15;
+  final String namaProduk = 'Asus ROG';
+
+  // CONST
+  // Nilainya sudah diketahui sejak compile-time dan tidak dapat diubah
+  const String namaToko = 'Riyuta Store';
+  const String mataUang = 'IDR';
+  const double pajak = 0.11;
+
+  print('==============================');
+  print('       DATA PEMESANAN');
+  print('==============================');
+
+  print('Nama Toko      : $namaToko');
+  print('Order ID       : $orderId');
+  print('Waktu          : $orderTime');
+  print('Nama Pelanggan : $namaPelanggan');
+  print('Nomor Antrian  : $nomorAntrian');
+  print('Nama Produk    : $namaProduk');
+
+  print('------------------------------');
+  print('Mata Uang      : $mataUang');
+  print('Pajak          : ${pajak * 100}%');
+
+  print('==============================');
+}
+
+//
+//let modifier dengan final dan const:
+//
+void main() {
+  // FINAL
+  final String orderId = 'ORD-2026-001';
+  final DateTime orderTime = DateTime.now();
+
+  // CONST
+  const String namaToko = 'Riyuta Store';
+  const String mataUang = 'IDR';
+
+  // LATE
+  late String nomorStruk;
+
+  // Nomor struk baru dibuat saat proses generate dijalankan
+  nomorStruk = 'REC-${DateTime.now().millisecondsSinceEpoch}';
+
+  print('==============================');
+  print('       DATA PEMESANAN');
+  print('==============================');
+  print('Nama Toko : $namaToko');
+  print('Order ID  : $orderId');
+  print('Waktu     : $orderTime');
+  print('No. Struk : $nomorStruk');
+  print('Mata Uang : $mataUang');
+  print('==============================');
+}
+
+//
 //Daftar Type Data:
 //
 void main() {
@@ -6,7 +126,7 @@ void main() {
   // CONST
   // Data yang nilainya sudah pasti
   // ==============================
-  const String namaToko = 'RIYUTA MART';
+  const String namaToko = 'RIYUTA STORE';
   const String alamatToko = 'Tangerang';
   const double pajak = 0.11;
   const String mataUang = 'Rp';
@@ -30,7 +150,7 @@ void main() {
   // BOOL
   // Status pembayaran
   // ==============================
-  bool pembayaranBerhasil = false;
+  bool pembayaranBerhasil = true;
 
   // ==============================
   // LATE
@@ -51,7 +171,7 @@ void main() {
 
   // ==============================
   // SET
-  // Kategori produk unik
+  // Kategori produk
   // ==============================
   Set<String> kategoriProduk = {
     'Laptop',
@@ -105,8 +225,7 @@ void main() {
 
   if (pembayaranBerhasil) {
     print('Status        : PEMBAYARAN BERHASIL');
-  }
- else {
+  } else {
     print('Status        : PEMBAYARAN GAGAL');
   }
 
